@@ -107,4 +107,10 @@ export const DEFAULT_GLOBAL_CONFIG: GlobalConfigState = {
   localBackup: {
     isEnabled: true,
   },
+  sound: {
+    volume: 100,
+    isPlayDoneSound: true,
+    isIncreaseDoneSoundPitch: true,
+    doneSound: 'done4.mp3',
+  }
 };
