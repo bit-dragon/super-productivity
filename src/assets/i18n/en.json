@@ -507,6 +507,7 @@
         "EDIT": "Edit Project",
         "SETUP_GIT": "Setup Github Integration",
         "SETUP_GITLAB": "Setup Gitlab Integration",
+        "SETUP_BITBUCKET": "Setup Integration",
         "SETUP_JIRA": "Setup Jira Integration"
       },
       "FORM_BASIC": {

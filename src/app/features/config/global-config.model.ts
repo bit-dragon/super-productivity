@@ -151,6 +151,7 @@ export type CustomCfgSection =
   'FILE_IMPORT_EXPORT'
   | 'GOOGLE_SYNC'
   | 'JIRA_CFG'
+  | 'BITBUCKET_CFG'
   | 'SIMPLE_COUNTER_CFG'
   | 'DROPBOX_SYNC';
 

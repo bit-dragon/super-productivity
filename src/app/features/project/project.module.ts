@@ -10,6 +10,7 @@ import { UiModule } from '../../ui/ui.module';
 import { JiraViewComponentsModule } from '../issue/providers/jira/jira-view-components/jira-view-components.module';
 import { GithubViewComponentsModule } from '../issue/providers/github/github-view-components/github-view-components.module';
 import { DialogGitlabInitialSetupModule } from '../issue/providers/gitlab/dialog-gitlab-initial-setup/dialog-gitlab-initial-setup.module';
+import {DialogBitbucketInitialSetupModule} from '../issue/providers/bitbucket/dialog-bitbucket-initial-setup/dialog-bitbucket-initial-setup.module';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { DialogGitlabInitialSetupModule } from '../issue/providers/gitlab/dialog
     JiraViewComponentsModule,
     GithubViewComponentsModule,
     DialogGitlabInitialSetupModule,
+    DialogBitbucketInitialSetupModule,
   ],
   declarations: [
     DialogCreateProjectComponent,

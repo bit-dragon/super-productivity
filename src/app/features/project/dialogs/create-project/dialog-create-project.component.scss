@@ -16,6 +16,10 @@ h1, mat-dialog-actions {
   }
 }
 
+.mat-icon.butbucket {
+  width: 40px;
+}
+
 :host::ng-deep .mat-form-field-infix {
   width: auto !important;
 }

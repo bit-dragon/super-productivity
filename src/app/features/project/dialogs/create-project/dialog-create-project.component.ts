@@ -23,6 +23,8 @@ import { WORK_CONTEXT_THEME_CONFIG_FORM_CONFIG } from '../../../work-context/wor
 import { GitlabCfg } from 'src/app/features/issue/providers/gitlab/gitlab';
 import { DEFAULT_GITLAB_CFG } from 'src/app/features/issue/providers/gitlab/gitlab.const';
 import { DialogGitlabInitialSetupComponent } from 'src/app/features/issue/providers/gitlab/dialog-gitlab-initial-setup/dialog-gitlab-initial-setup.component';
+import {BitbucketCfg} from '../../../issue/providers/bitbucket/bitbucket';
+import {DialogBitbucketInitialSetupComponent} from '../../../issue/providers/bitbucket/dialog-bitbucket-initial-setup/dialog-bitbucket-initial-setup.component';
 
 @Component({
   selector: 'dialog-create-project',
@@ -37,6 +39,7 @@ export class DialogCreateProjectComponent implements OnInit, OnDestroy {
   jiraCfg?: JiraCfg;
   githubCfg?: GithubCfg;
   gitlabCfg?: GitlabCfg;
+  bitbucketCfg?: BitbucketCfg;
 
   formBasic: FormGroup = new FormGroup({});
   formTheme: FormGroup = new FormGroup({});
@@ -91,6 +94,7 @@ export class DialogCreateProjectComponent implements OnInit, OnDestroy {
           JIRA: this.jiraCfg,
           GITHUB: this.githubCfg,
           GITLAB: this.gitlabCfg,
+          BITBUCKET: this.bitbucketCfg,
         };
         const projectDataToSave: Project | Partial<Project> = {
           ...this.projectData,
@@ -189,6 +193,20 @@ export class DialogCreateProjectComponent implements OnInit, OnDestroy {
     }));
   }
 
+  openBitbucketCfg() {
+    this._subs.add(this._matDialog.open(DialogBitbucketInitialSetupComponent, {
+      restoreFocus: true,
+      data: {
+        gitlabCfg: this.gitlabCfg,
+      }
+    }).afterClosed().subscribe((bitbucketConfig: BitbucketCfg) => {
+
+      if (bitbucketConfig) {
+        this._saveBitbucketCfg(bitbucketConfig);
+      }
+    }));
+  }
+
   private _saveJiraCfg(jiraCfg: JiraCfg) {
     this.jiraCfg = jiraCfg;
     this._cd.markForCheck();
@@ -216,6 +234,15 @@ export class DialogCreateProjectComponent implements OnInit, OnDestroy {
     // if we're editing save right away
     if (this.projectData.id) {
       this._projectService.updateIssueProviderConfig(this.projectData.id, GITLAB_TYPE, this.gitlabCfg);
+    }
+  }
+
+  private _saveBitbucketCfg(bitbucketCfg: BitbucketCfg) {
+    this.bitbucketCfg = bitbucketCfg;
+    this._cd.markForCheck();
+
+    if (this.projectData.id) {
+      console.log('call to provider');
     }
   }
 }

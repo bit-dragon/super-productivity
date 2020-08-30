@@ -3,10 +3,11 @@ import { JiraCfg } from './providers/jira/jira.model';
 import { GithubCfg } from './providers/github/github.model';
 import { GithubIssue, GithubIssueReduced } from './providers/github/github-issue/github-issue.model';
 import { GitlabCfg } from './providers/gitlab/gitlab';
+import { BitbucketCfg } from './providers/bitbucket/bitbucket';
 import { GitlabIssue } from './providers/gitlab/gitlab-issue/gitlab-issue.model';
 
-export type IssueProviderKey = 'JIRA' | 'GITHUB' | 'GITLAB';
-export type IssueIntegrationCfg = JiraCfg | GithubCfg | GitlabCfg;
+export type IssueProviderKey = 'JIRA' | 'GITHUB' | 'GITLAB' | 'BITBUCKET';
+export type IssueIntegrationCfg = JiraCfg | GithubCfg | GitlabCfg | BitbucketCfg;
 
 export enum IssueLocalState {
   OPEN = 'OPEN',
@@ -19,6 +20,7 @@ export interface IssueIntegrationCfgs {
   JIRA?: JiraCfg;
   GITHUB?: GithubCfg;
   GITLAB?: GitlabCfg;
+  BITBUCKET?: BitbucketCfg;
 }
 
 export type IssueData = JiraIssue | GithubIssue | GitlabIssue;

@@ -50,6 +50,17 @@
           <span style="padding-left: 8px;">{{T.F.PROJECT.D_CREATE.SETUP_GITLAB|translate}}</span>
         </button>
       </div>
+      <div class="item">
+        <button (click)="openBitbucketCfg()"
+                color="primary"
+                mat-button
+                type="button">
+          <mat-icon *ngIf="!bitbucketCfg?.project"
+                    svgIcon="bitbucket"></mat-icon>
+          <mat-icon *ngIf="bitbucketCfg?.project">checkmark</mat-icon>
+          <span style="padding-left: 8px;">{{T.F.PROJECT.D_CREATE.SETUP_BITBUCKET|translate}}</span>
+        </button>
+      </div>
       <!--<div class="item">-->
       <!--<button mat-raised-button color=primary-->
       <!--type="button">-->
